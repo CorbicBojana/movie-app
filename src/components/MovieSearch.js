@@ -1,8 +1,8 @@
 import React from "react";
 
-function MovieSearch() {
+function MovieSearch(props) {
     return (
-        <form className="movieForm">
+        <form className="movieForm" onChange={props.handleChange}>
             <input className="movieSearch" type="text" placeholder="search"></input>
         </form>
     )

@@ -1,3 +1,8 @@
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -5,10 +10,6 @@ body {
     color: #f1f1f1;
     width: 100%;
     min-height: 100vh;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 .header {
@@ -31,11 +32,9 @@ body {
 .movie-single {
     height: 360px;
     width: 300px;
-    background-color: #ff4444;
     margin: 25px;
 }
 
 img {
     height: 100%;
-    width: 100%;
 }
