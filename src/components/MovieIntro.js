@@ -4,16 +4,20 @@ function MovieIntro(props) {
   if (!props.movie) {
     return null;
   }
-  console.log(props.movie);
 
   return (
-    <div className="movieIntro">
-      <h1>{props.movie.title}</h1>
-      <p>{props.movie.overview}</p>
-      <img
-        src={`http://image.tmdb.org/t/p/w500/` + props.movie.poster_path}
-        alt={props.movie.title}
-      />
+    <div
+      className="movieIntro"
+      style={{
+        backgroundImage: `url("http://image.tmdb.org/t/p/w500/${props.movie.poster_path}")`
+      }}
+    >
+      <div className="movieContainer">
+        <div className="movieText">
+          <h1 className="movieTitle">{props.movie.title}</h1>
+          <p className="movieOverview">{props.movie.overview}</p>
+        </div>
+      </div>
     </div>
   );
 }

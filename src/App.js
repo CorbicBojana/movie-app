@@ -12,7 +12,7 @@ const API_KEY = "8b930749c5e12df1a8c5e4c73c9f9fa5";
 function App() {
   const [movies, setMovies] = useState([]);
   const [inputMovie, setInputMovie] = useState("");
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
 
   let getPopularMovies = async page => {
     const api_call = await fetch(
@@ -56,18 +56,23 @@ function App() {
     },
     [page]
   );
-  console.log(page);
+
   return (
     <React.Fragment>
       <Nav />
       <MovieIntro movie={movies[0]} />
       <MovieSearch handleChange={handleChange} inputMovie={inputMovie} />
+      <div className="titleContainer">
+        <h2 className="titleMovies">Popular Movies</h2>
+      </div>
       <div className="movie-all">
         {movies.map((x, y) => (
           <MovieSingle date={x} key={y} />
         ))}
       </div>
-      <button onClick={() => setPage(x => x + 1)}>Load more</button>
+      <button className="button" onClick={() => setPage(x => x + 1)}>
+        Load more
+      </button>
     </React.Fragment>
   );
 }

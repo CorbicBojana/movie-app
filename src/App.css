@@ -1,40 +1,247 @@
-
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #333;
-    color: #f1f1f1;
-    width: 100%;
-    min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .header {
-    width: 980px;
-    height: 200px;
-    margin: 0 auto;
+  width: 100%;
+  background: #1c1c1c;
+  padding: 0 20px;
 }
 
-.logo {
-    width: 300px;
+.header-content {
+  max-width: 1280px;
+  min-height: 120px;
+  padding: 20px 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.logo_left {
+  width: 300px;
+  margin-top: 20px;
+  float: left;
+}
+
+.logo_right {
+  width: 122px;
+  margin-top: 25px;
+  float: right;
+}
+
+.movieIntro {
+  width: 100%;
+  height: 600px;
+  background-position: 25% 25%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 40px 20px;
+}
+
+.movieContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.movieText {
+  position: absolute;
+  margin-left: 20px;
+  width: 60%;
+  bottom: 40px;
+}
+
+.movieTitle {
+  font-family: Abel, sans-serif;
+  font-size: 48px;
+  color: #fff;
+}
+
+.movieOverview {
+  font-family: Abel, sans-serif;
+  font-size: 22px;
+  line-height: 26px;
+  color: #fff;
+}
+
+.searchbar {
+  width: 100%;
+  height: 105px;
+  background: #1c1c1c;
+  padding: 25px 20px 0;
+  color: #fff;
+}
+
+.searchbarContent {
+  max-width: 1280px;
+  width: 100%;
+  height: 55px;
+  background: #353535;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 40px;
+  color: #fff;
+}
+
+.movieSearch {
+  font-family: Abel, sans-serif;
+  font-size: 38px;
+  position: absolute;
+  left: 70px;
+  top: 7px;
+  border: 0;
+  background: transparent;
+  height: 40px;
+  color: #fff;
+  outline: none;
+}
+
+.search {
+  position: absolute;
+  left: 20px;
+  top: 12px;
+  color: #fff;
+}
+
+.search::before {
+  content: "";
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: block;
+}
+
+.search::after {
+  content: "";
+  width: 3px;
+  height: 10px;
+  background-color: #fff;
+  display: block;
+  position: absolute;
+  left: 95%;
+  top: 75%;
+  transform: rotate(-45deg);
 }
 
 .movie-all {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .movie-single {
-    height: 360px;
-    width: 300px;
-    margin: 25px;
+  width: 25%;
+  padding: 2%;
 }
 
-img {
-    height: 100%;
+.movie-single-inner {
+  width: 100%;
+  padding-top: 170%;
+  position: relative;
+}
+
+.movie-href {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.movie-href img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.titleContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.titleMovies {
+  font-family: Abel, sans-serif;
+  font-size: 42px;
+}
+
+.button {
+  background-color: #16d47b;
+  width: 100%;
+  border: none;
+  outline: none;
+  margin: 20px;
+  padding: 20px;
+  color: #fff;
+  font-size: 42px;
+  cursor: pointer;
+}
+
+.movie-navigation {
+  width: 100%;
+  height: 50px;
+  background: #353535;
+  color: #fff;
+  padding: 20px;
+  padding-top: 10px;
+}
+
+.movie-navigation p {
+  font-family: Abel, sans-serif;
+  font-size: 22px;
+  float: left;
+  color: #fff;
+  padding-right: 10px;
+  text-decoration: none;
+  margin: 0;
+}
+
+.movie-intro-content {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.movie-intro-content img {
+  width: 350px;
+  height: 520px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.actorContainer {
+  display: inline-block;
+  width: 25%;
+  background-color: #353535;
+  margin: 0 40px 40px 0;
+}
+
+.actorContainer img {
+  width: 100px;
+}
+
+.actor {
+  display: flex;
+}
+
+.actor-right {
+  display: block;
+}
+
+.actor-name {
+  font-family: Abel, sans-serif;
+  font-size: 22px;
+  color: #fff;
+  margin: 10px 20px;
+}
+
+.text {
+  font-size: 18px;
 }
