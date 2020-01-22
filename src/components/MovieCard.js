@@ -34,6 +34,14 @@ function MovieCard(props) {
     getActorsMovie();
   }, []);
 
+  const loadDefaultImage = num => {
+    var hours = Math.floor(num / 60);
+    var minutes = num % 60;
+    return " " + hours + "h " + minutes + "m ";
+  };
+
+  const rating = props.location.state.movie.vote_average * 10;
+
   return (
     <div className="movie-card">
       <Nav />
@@ -48,45 +56,82 @@ function MovieCard(props) {
         }}
       >
         <div className="movie-intro-content">
-          <img
-            alt={props.location.state.movie.title}
-            src={
-              `http://image.tmdb.org/t/p/w500/` +
-              props.location.state.movie.poster_path
-            }
-          />
+          <div>
+            <div>
+              <img
+                alt={props.location.state.movie.title}
+                src={
+                  `http://image.tmdb.org/t/p/w500/` +
+                  props.location.state.movie.poster_path
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div className="movie-intro-text">
           <h2>{props.location.state.movie.title}</h2>
           <p>
             <span>Plot</span>
             {props.location.state.movie.overview}
           </p>
+          <span>Genres</span>
+          <div className="genres">
+            {genres.map((x, y) => (
+              <MovieGenre date={x} key={y} />
+            ))}
+          </div>
+          <p>
+            IMDB RATING
+            <div className="rating">
+              <meter
+                min="0"
+                max="100"
+                optimum="100"
+                low="40"
+                high="70"
+                value={rating}
+              ></meter>
+            </div>
+            <span>{props.location.state.movie.vote_average}</span>
+          </p>
+          <span>Directors</span>
+          <i
+            aria-hidden="true"
+            className="fa fa-film fa-5x fa-film icon-movie"
+          ></i>
         </div>
-        <div className="movie-intro-content"></div>
-        <span>Genres</span>
-        <div>
-          <h2 className="titleMovies">Actors</h2>
-          {genres.map((x, y) => (
-            <MovieGenre date={x} key={y} />
-          ))}
+        <div className="movie-infobar">
+          <div className="movie-infobar-inner">
+            <span
+              aria-hidden="true"
+              className="fa fa-clock-o fa-2x fa-time icon"
+            ></span>
+            Running Time:
+            <span>{loadDefaultImage(genreMovie.runtime)}</span>
+          </div>
+          <div className="movie-infobar-inner">
+            <span
+              aria-hidden="true"
+              className="fa fa-money fa-2x fa-budget icon"
+            ></span>
+            Budget:
+            <span>
+              ${genreMovie.budget ? genreMovie.budget.toLocaleString() : ""}
+            </span>
+          </div>
+          <div className="movie-infobar-inner">
+            <span
+              aria-hidden="true"
+              className="fa fa-ticket fa-2x fa-revenue icon"
+            ></span>
+            Revenue:
+            <span>
+              ${genreMovie.revenue ? genreMovie.revenue.toLocaleString() : ""}
+            </span>
+          </div>
         </div>
-        <p>
-          IMDB RATING
-          <span>{props.location.state.movie.vote_average}</span>
-        </p>
-        <p>Directors</p>
-        <p>
-          Running Time
-          <span>{genreMovie.runtime}</span>
-        </p>
-        <p>
-          Budget
-          <span>{genreMovie.budget}</span>
-        </p>
-        <p>
-          Revenue
-          <span>{genreMovie.revenue}</span>
-        </p>
-        <div>
+        <h2 className="titleActors">Actors</h2>
+        <div className="actorsFlex">
           {actors.map((x, y) => (
             <MovieActors date={x} key={y} />
           ))}

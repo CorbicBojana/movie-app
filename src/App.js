@@ -10,6 +10,7 @@ import MovieSingle from "./components/MovieSingle";
 const API_KEY = "8b930749c5e12df1a8c5e4c73c9f9fa5";
 
 function App() {
+  const [movie, setMovie] = useState([]);
   const [movies, setMovies] = useState([]);
   const [inputMovie, setInputMovie] = useState("");
   const [page, setPage] = useState(1);
@@ -19,6 +20,7 @@ function App() {
       `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${page}`
     );
     const movieResponse = await api_call.json();
+    setMovie(movieResponse.results);
     setMovies(movies => movies.concat(movieResponse.results));
   };
 
@@ -60,7 +62,7 @@ function App() {
   return (
     <React.Fragment>
       <Nav />
-      <MovieIntro movie={movies[0]} />
+      <MovieIntro movie={movie[0]} />
       <MovieSearch handleChange={handleChange} inputMovie={inputMovie} />
       <div className="titleContainer">
         <h2 className="titleMovies">Popular Movies</h2>
