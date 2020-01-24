@@ -1,7 +1,8 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import defaultImage from "../no_image.jpg";
+
+import defaultImage from "../../../no_image.jpg";
 
 function MovieSingle(props) {
   const loadDefaultImage = e => {
@@ -14,7 +15,7 @@ function MovieSingle(props) {
         <Link
           className="movie-href"
           to={{
-            pathname: `/movieCard/${props.date.id}`,
+            pathname: `/${props.date.id}`,
             state: { movie: props.date }
           }}
         >

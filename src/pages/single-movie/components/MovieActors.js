@@ -1,6 +1,6 @@
 import React from "react";
 
-import defaultImage from "../no_image.jpg";
+import defaultImage from "../../../no_image.jpg";
 
 function MovieActors(props) {
   const loadDefaultImage = e => {

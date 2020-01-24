@@ -1,32 +1,57 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import Nav from "./Nav";
-import MovieGenre from "./MovieGenre";
-import MovieActors from "./MovieActors";
+import Nav from "../../components/Nav";
+import MovieGenre from "./components/MovieGenre";
+import MovieActors from "./components/MovieActors";
 
-const API_KEY = "8b930749c5e12df1a8c5e4c73c9f9fa5";
+import config from "../../config";
+import instance from "../../axios";
 
-function MovieCard(props) {
+const { API_KEY } = config;
+
+function SingleMovie(props) {
   const [genres, setGenres] = useState([]);
   const [actors, setActors] = useState([]);
   const [genreMovie, setGenreMovie] = useState([]);
   const movie_id = props.location.state.movie.id;
 
-  let getGenreMovie = async () => {
+  /*let getGenreMovie = async () => {
     const api_call = await fetch(
-      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+      `${API_URL}/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
     );
     const genreResponse = await api_call.json();
     setGenres(genreResponse.genres);
     setGenreMovie(genreResponse);
+  };*/
+
+  let getGenreMovie = () => {
+    // We're using axios instead of Fetch
+    instance
+      // The API we're requesting data from
+      .get(`/movie/${movie_id}?api_key=${API_KEY}&language=en-US`)
+      .then(response => {
+        setGenres(response.data.genres);
+        setGenreMovie(response.data);
+      });
   };
 
-  let getActorsMovie = async () => {
+  /*let getActorsMovie = async () => {
     const api_call = await fetch(
-      `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`
+      `${API_URL}/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`
     );
     const actorsResponse = await api_call.json();
     setActors(actorsResponse.cast);
+  };*/
+
+  let getActorsMovie = () => {
+    // We're using axios instead of Fetch
+    instance
+      // The API we're requesting data from
+      .get(`/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`)
+      .then(response => {
+        setActors(response.data.cast);
+      });
   };
 
   useEffect(() => {
@@ -46,7 +71,9 @@ function MovieCard(props) {
     <div className="movie-card">
       <Nav />
       <div className="movie-navigation">
-        <p>Home /</p>
+        <Link to="./">
+          <p>Home /</p>
+        </Link>
         <p>{props.location.state.movie.title}</p>
       </div>
       <div
@@ -82,16 +109,14 @@ function MovieCard(props) {
           </div>
           <p>
             IMDB RATING
-            <div className="rating">
-              <meter
-                min="0"
-                max="100"
-                optimum="100"
-                low="40"
-                high="70"
-                value={rating}
-              ></meter>
-            </div>
+            <meter
+              min="0"
+              max="100"
+              optimum="100"
+              low="40"
+              high="70"
+              value={rating}
+            ></meter>
             <span>{props.location.state.movie.vote_average}</span>
           </p>
           <span>Directors</span>
@@ -141,4 +166,4 @@ function MovieCard(props) {
   );
 }
 
-export default MovieCard;
+export default SingleMovie;

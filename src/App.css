@@ -341,7 +341,11 @@ body {
   font-size: 22px;
 }
 
-@media only screen and (max-width: 1080px) {
+meter {
+  display: block;
+}
+
+@media (max-width: 1080px) {
   .actorContainer {
     width: 25%;
   }
@@ -351,7 +355,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .movie-single {
     width: 50%;
   }
@@ -364,9 +368,13 @@ body {
     font-size: 16px;
     line-height: 1;
   }
+
+  .actor-container {
+    width: 40%;
+  }
 }
 
-@media only screen and (max-width: 420px) {
+@media (max-width: 420px) {
   .movie-single {
     width: 100%;
   }
